@@ -33,8 +33,6 @@ impl FrameGen {
     // of the image. The rectangles will be the height of the image
     // Create a base sweeper which is a multi-color rectangle that stretches the width
     // of the image.
-    // The sweeper will be overlayed over the image at various points. Where the sweeper
-    // is will be calculated using the current frame and frames per second.
 
     fn create_base(&self) -> ImageBuffer<Rgb<u8>, Vec<u8>> {
         // Create all 8 bars and color them. Once they are created we can copy them
