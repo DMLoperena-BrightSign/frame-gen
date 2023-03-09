@@ -15,6 +15,7 @@ ffmpeg -r 60 -i frame%d.png -c:v libx265 -vf "drawtext=fontfile=/usr/share/fonts
 **Building and usage**
 
 Make sure Rust is installed on your system by following the instructions here: https://rustup.rs/
+
 Once Rust has been installed, clone the repository and from the project directory run:
 
 ```
@@ -22,6 +23,7 @@ cargo build --release
 ```
 
 The program will be output into the target/release directory under the name frame-gen.
+
 To generate frames for a 3840x2160x60p video of 10s you would run:
 
 ```
