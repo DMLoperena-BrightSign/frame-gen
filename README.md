@@ -11,3 +11,16 @@ an mp4 with the current frame number overlayed.
 ffmpeg -r 60 -i frame%d.png -c:v libx265 -vf "drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-BoldOblique.ttf: text='Frame\: %{frame_num}': start_number=1: x=(w-tw)/2: y=h-(2*1h): fontcolor=black: fontsize=200,fps=60,format=yuv420p" -minrate 10M -maxrate 20M -b:v 25M -x265-params pass=1 -f mp4 /dev/null && ffmpeg -r 60 -i frame%d.png -c:v libx265 -vf "drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-BoldOblique.ttf: text='Frame\: %{frame_num}': start_number=1: x=(w-tw)/2: y=h-(2*1h): fontcolor=black: fontsize=200,fps=60,format=yuv420p" -minrate 10M -maxrate 20M -b:v 25M -x265-params pass=2 out.mp4
 ```
 ![alt text](https://github.com/DMLoperena-BrightSign/frame-gen/blob/main/example/output.gif)
+
+**Building and usage**
+Make sure Rust is installed on your system by following the instructions here: https://rustup.rs/
+Once Rust has been installed, clone the repository and from the project directory run:
+```
+cargo build --release
+```
+The program will be output into the target/release directory under the name frame-gen.
+To generate frames for a 3840x2160x60p video of 10s you would run:
+```
+frame-gen -t 10 -w 3840 -v 2160 -f 60 -d ./frames
+```
+More information on the options can be retrieved by running -h, --help
